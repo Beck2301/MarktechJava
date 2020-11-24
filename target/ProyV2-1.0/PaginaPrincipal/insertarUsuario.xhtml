@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro</title>
+        
+         <link  rel="icon"   href="https://pruebaeg180196.000webhostapp.com/logo_size_invert.jpg" type="image/png" />
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/util.css"/>
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/main.css"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/tienda.css"/>
+    </h:head>
+    <h:body class="bodyRe"> 
+   
+        <nav class="navbar navbar-expand-lg navbar-dark menu" style="
+             margin-bottom: 0px;
+             ">
+            <h:link class="navbar-brand" outcome="/index.xhtml"> <img src="https://pruebaeg180196.000webhostapp.com/3880313004_f05a519d-0079-43fc-b0fb-70e719404e68.png" alt="" height="40px"/> </h:link>
+            
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <!-- 
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="/index.xhtml">Inicio</h:link>
+                    </li> -->
+                   
+                  <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="/PaginaPrincipal/PaginaPrincipal.xhtml">Inicio</h:link>
+                    </li>
+                 
+                
+                </ul>
+  
+            </div>
+        </nav>
+
+        <div class=" text-white">
+
+
+
+            <div class="container py-5 text-dark">
+                <div class="limiter rounded">
+                    <div class="container-login100 rounded p-4  ">
+
+
+                        <div class="wrap-login100 rounded">
+                            
+
+                            <h:form class="login100-form validate-form border border-warning" style="
+                                        padding-top: 95px;">
+                               <span class="login100-form-title p-b-35 border-warning">
+                                        <img src="https://pruebaeg180196.000webhostapp.com/logo_size.jpg" alt=""
+                                             class="img-fluid  " height="150px" width="150px"/>
+                                    </span>
+                                <b:container fluid="true">
+                               
+                              <div class="wrap-input100  validate-input m-b-20">
+                                        <b:row>
+                                          
+                                            <b:column class="input100">
+                                                <h:outputText value="Establezca un nombre de usario para loguearse" />
+                                                <b:inputText  value="#{userController.user.nombreUsuario}" required="true"/>
+                                            </b:column>
+                                        </b:row>
+                                     </div>
+                                    <div class="wrap-input100  validate-input m-b-20">
+                                        <b:row>
+                                            <br></br>
+                                            <b:column class="input100">
+                                                <h:outputText value="Cree su contraseña" />
+                                                <p:password style="width: 100%" id="pss" value="#{userController.user.clave}" match="pss1" label="clave" required="true"/><br/><br/>
+                                                <h:outputText value="Introduzca la nueva contraseña nuevamente" />
+                                                <p:password style="width: 100%" id="pss1" value="#{userController.user.clave}"  label="clave2" required="true" feedback="false"/>
+                                            </b:column>
+                                        </b:row>
+                                        </div>
+                                        <b:row>
+                                            <br></br>
+                                            <b:column class="input100">
+                                                <h:outputText value="Seleccione el cliente a asignar el usuario creado" />
+                                                <p:selectOneMenu style="width: 100%" value="#{userController.cliente.idCliente}">
+                                                    <f:selectItem itemLabel="Cliente" itemValue=""  />
+                                                    <f:selectItems value="#{clienteController.lista2}" var="c" itemLabel="#{c.nombreCliente} #{c.apellidoCliente}" itemValue="#{c.idCliente}"/>
+                                                </p:selectOneMenu>
+                                            </b:column>
+                                        </b:row>
+                                        <br></br>
+                                        <b:row>
+                                            <b:column class="input100">
+                                                <b:commandButton value="Regístrarme" look="info" style="width: 100%" actionListener="#{userController.insertarUsuario()}"/>
+                                            </b:column>
+                                        </b:row>
+                                
+
+                                </b:container>
+                            </h:form>
+                              <div class="login100-more "
+                                     style="background-image: url('https://i.pinimg.com/originals/8f/14/57/8f14578ef69a4c53352955d1e072eda6.png');">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+ 
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+</h:body>
+</html>
+

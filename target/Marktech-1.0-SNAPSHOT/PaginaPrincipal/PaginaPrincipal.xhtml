@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>C'est La Vie</title>
+        <link href="../resources/css/PaginaPrincipal.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .downwards .dropdown-submenu>.dropdown-menu {
+                position: relative;
+                left: -0;
+            }
+        </style>
+        <f:event type="preRenderView" listener="#{validarSesionController.index()}"/>
+    </h:head>
+    <h:body class="body">
+        <h:outputScript library="js" name="userActivo.js" />
+        <div id="usuarioLogeadoDIV" style="display: none" >#{userController.kevin}</div>
+        <ui:include src="/PaginaPrincipal/navbarPrincipal.xhtml"/>
+        <h:form>
+            <b:carousel id="tiovivo" style="width: 1450px" interval="5500">
+                <b:carouselItem >
+                    <img src="../resources/Imagenes/a3 (2).jpg" alt="Valladolid" style="width: 1500px; height: 600px" />
+                    <b:carouselCaption>
+                        <h2>"C'est La Vie" ¡Bienvenido!</h2>
+                        <p>Somos una tienda en linea de prendas y accesorios para ambos sexos.</p>
+                    </b:carouselCaption>
+                </b:carouselItem>
+                <b:carouselItem caption="Descuento en todo tipo de Blazers">
+                    <img src="../resources/Imagenes/a1 (2).jpg" alt="Valladolid" style="width: 1500px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem caption="¡Mantente a la moda!">
+                    <img src="../resources/Imagenes/she_1219_rebajas.jpg" alt="Valladolid" style="width: 1500px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                    <img src="../resources/Imagenes/a2.jpg" alt="Valladolid" style="width: 1500px; height: 600px" />
+                    <b:carouselCaption>
+                        <h2>Para los reyes del hogar</h2>
+                        <p>Ropa para niños y niñas.</p>
+                    </b:carouselCaption>
+                </b:carouselItem>
+                <b:carouselItem caption="Regístrate y recibiras exclusivas ofertas">
+                    <img src="../resources/Imagenes/she_1219_rebajas.jpg" alt="Valladolid" style="width: 1500px; height: 600px" />
+                </b:carouselItem>
+            </b:carousel>
+        </h:form>
+        <b:button look="info" value="CLICK AQUÍ PARA VER EL CATÁLOGO DE ROPA" outcome="/landpage/catalogo.xhtml" style="width: 100%; height: 50px;
+                  font-size: 20px"/>
+        <b:row>
+            <b:column col-sm="6" col-md="4">
+                <b:thumbnail>
+                    <img src="../resources/Imagenes/67070531_94_D5.jpg" alt="Generic placeholder thumbnail"/>
+                    <f:facet name="caption">
+                        <h3 style="text-align: center">Ropa para niños</h3>
+                        <p>
+                            <b:button look="info" value="Ir a categoría de Niños" outcome="/landpage/ninos.xhtml" style="margin-right: 10px;width: 100%"/>
+                        </p>
+                    </f:facet>
+                </b:thumbnail>
+            </b:column>
+            <b:column col-sm="6" col-md="4">
+                <b:thumbnail>
+                    <img src="../resources/Imagenes/67010518_92-99999999_01.jpg" alt="Generic placeholder thumbnail"/>
+                    <f:facet name="caption">
+                        <h3 style="text-align: center">Ropa para Caballeros</h3>
+                        <p>
+                            <b:button look="info" value="Ir a categoría de Caballero" outcome="/landpage/hombres.xhtml" style="margin-right: 10px;width: 100%"/>
+                        </p>
+                    </f:facet>
+                </b:thumbnail>
+            </b:column>
+            <b:column col-sm="6" col-md="4">
+                <b:thumbnail>
+                    <img src="../resources/Imagenes/67040075_99_D6.jpg" alt="Generic placeholder thumbnail"/>
+                    <f:facet name="caption">
+                        <h3 style="text-align: center">Ropa para Damas</h3>
+                        <p>
+                            <b:button look="info" value="Ir a categoría de Damas" outcome="/landpage/mujeres.xhtml" style="margin-right: 10px;width: 100%"/>
+                        </p>
+                    </f:facet>
+                </b:thumbnail>
+            </b:column>
+        </b:row>
+    </h:body>
+</html>
+

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Detalle de venta</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+        <f:event type="preRenderView" listener="#{validarSesionController.validarCompra()}"/>
+    </h:head>
+    <h:body class="body">
+        <p:growl id="msj"/>
+        <div class="menu">
+            <b:navBar brand-img="../resources/Imagenes/a1 - copia (2).jpg" brandHref="../PaginaPrincipal/PaginaPrincipal.xhtml" inverse="false"></b:navBar>
+        </div>
+        <b:container fluid="true">
+            <h:form>
+                <p:panelGrid columns="1" style="width: 50%;text-align: center;margin: auto">
+                    <p:panel header="Necesitamos tu información para procesar la compra">
+
+                        <h:form id="v">
+                            <p:panelGrid columns="2" style="margin: auto">
+
+                                <p:outputLabel value="Cliente"/>
+                                <p:selectOneMenu value="#{ventaController.cliente.idCliente}">     
+                                    <f:selectItems value="#{clienteController.lista2}" var="c" itemLabel="#{c.nombreCliente}" itemValue="#{c.idCliente}"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Tarjeta"/>
+                                <p:selectOneMenu value="#{ventaController.detalleTarjeta.idDetalleTarjeta}">     
+                                    <f:selectItems value="#{detalleTarjetaController.listaTarjeta}" var="dt" itemLabel="#{dt.ping}" itemValue="#{dt.idDetalleTarjeta}"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Fecha de compra"/>
+                                <p:calendar pattern="yyyy-MM-dd" value="#{ventaController.venta.fecha}" />
+                                <h:outputText value="Estado"/>
+                                <p:selectOneMenu value="#{ventaController.venta.estado}">     
+                                    <f:selectItem itemValue="false" itemLabel="Inactivo"/>
+                                    <f:selectItem itemValue="true" itemLabel="Activo"/>
+                                </p:selectOneMenu>
+                                <p:commandButton value="Guardar" actionListener="#{ventaController.crear()}"/>
+                            </p:panelGrid>                
+                        </h:form>
+                    </p:panel>
+                </p:panelGrid>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+     >
+    <h:head>
+        <title>C'est La Vie</title>
+        <link href="../resources/css/PaginaPrincipal.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .downwards .dropdown-submenu>.dropdown-menu {
+                position: relative;
+                left: -0;
+            }
+            .margin{
+                margin-top: 50px;
+                margin-bottom: 100px;
+                margin-right: 150px;
+                margin-left: 80px;
+            }
+            .buttons{
+                width: 100%;
+                margin-bottom: 10px
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="menu">
+            <b:navBar brand-img="../resources/Imagenes/a1 - copia (2).jpg" brandHref="../PaginaPrincipal/PaginaPrincipal.xhtml" inverse="false">
+                <b:navbarLinks><b:navLink value="Mujeres" href="mujeres.xhtml" /></b:navbarLinks>
+                <b:navbarLinks><b:navLink value="Hombres" href="hombres.xhtml" /></b:navbarLinks>
+                <b:navbarLinks><b:navLink value="Niños" href="ninos.xhtml" /></b:navbarLinks>
+                <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                <b:navbarLinks pull="right" styleClass="hidden-xs">
+                    <b:dropMenu value="Iniciar Sesión" icon="user" styleClass="btnOcultarOPCUser">
+                        <h:form>
+                            <b:container fluid="true">
+                                <br></br>
+                                <b:commandButton value="Iniciar Sesión" look="info" style="width: 100%" action="/PaginaPrincipal/Usuario"/>
+                                <br></br>
+                                <br></br>
+                                <p>¿No tienes cuenta? </p>
+                                <b:link value="Registrate" outcome="/PaginaPrincipal/RegistroUsuario"/>
+                                <br></br>
+                                <br></br>
+                            </b:container>
+                        </h:form>
+                    </b:dropMenu>
+                    <b:dropMenu value="Usuario logeado"  icon="user" style="height: 35%" rendered="#{facesContext.getCurrentInstance().getExternalContext().getSessionMap()!=null}" styleClass="btnVerOPCUser">
+                        <b:container fluid="true" style="align-content: center;text-align: center">
+                            <h:form>
+                                <img src="../resources/Imagenes/icon.jpg" style="width: 100%"/>
+                                <p:separator/>
+                                <b:commandButton value="Editar perfil" look="info" action="#{validarSesionController.redireccion()}" style="width: 100%"/><br/><br/>
+                                <b:commandButton value="Cerrar sesión"  actionListener="#{validarSesionController.salir()}" look="info" style="width: 100%"/>
+                            </h:form>
+                        </b:container>
+                    </b:dropMenu>
+                     <p:growl id="carro" life="2000"/>
+                     <b:dropMenu value="Carrito" icon="shopping-cart" id="carritos"/>
+                      <p:overlayPanel  hideEffect="fade" for=":carritos" style="width:800px;" dynamic="false">
+                <h:form id="mi">
+                    <p:dataTable var="d" style="width: 120%;" value="#{detalleVentaController.list}" scrollable="true" scrollWidth="95%" scrollHeight="150" rows="5" paginator="true">
+                        <p:column>
+                            <h:graphicImage value="#{d.url}" width="50px;"/>
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{d.nombreProducto}" />
+                        </p:column>
+                        <p:column headerText="Marca">
+                            <h:outputText value="#{d.marca.nombreMarca}"/>
+                        </p:column>
+                        <p:column headerText="Precio Venta">
+                            <h:outputText value="#{d.precioVenta}" />
+                        </p:column>
+                        <p:column headerText="Talla">
+                            <h:outputText value="#{d.talla.talla}" />
+                        </p:column>
+
+                        <p:column headerText="Tipo de Ropa">
+                            <h:outputText value="#{d.tipoRopa.nombreTipoRopa}" />
+                        </p:column>
+
+                        <p:column headerText="Categoria">
+                            <h:outputText value="#{d.categoria.nombreCategoria}"/>
+                        </p:column>
+                        <p:column>
+                            <h:form>
+                                <b:commandButton value="Borrar" update="mi"  icon="times" action="#{detalleVentaController.delete(d)}"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+
+                    <h:outputLabel for="total" value="Total:" />
+                    <h:outputText id="total" value="$#{detalleVentaController.total}" />
+                    <br>
+                        <h:outputLabel for="contador" value="Prendas:"/>
+                        <h:outputText id="contador" value="#{detalleVentaController.contador}"/>
+                    </br>
+                </h:form>
+                <h:form>
+                    <p:commandButton value="Compra Realizada" action="#{validarSesionController.redireccionCompra()}">
+                    </p:commandButton>
+                    <p:commandButton value="Vaciar carrito" update=":mi" action="#{detalleVentaController.deleteAll(d)}" style="margin-left: 50px;"/>
+                </h:form>
+            </p:overlayPanel>
+                </b:navbarLinks>
+            </b:navBar>
+        </div>
+    </h:body>
+</html>
+

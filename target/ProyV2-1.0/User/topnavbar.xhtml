@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Marktech</title>
+
+        <link  rel="icon"   href="https://pruebaeg180196.000webhostapp.com/logo_size_invert.jpg" type="image/png" />
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/util.css"/>
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/main.css"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/tienda.css"/>
+
+
+    </h:head>
+    <h:body>
+
+
+        <nav  class="navbar navbar-expand-lg navbar-dark menu">
+
+            <h:link class="navbar-brand" outcome="/PaginaPrincipal/PaginaPrincipal.xhtml"> <img src="https://pruebaeg180196.000webhostapp.com/3880313004_f05a519d-0079-43fc-b0fb-70e719404e68.png" alt="" height="40px"/> </h:link>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/landpage/mujeres.xhtml">Tecnologia</h:link>
+                    </li>
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/landpage/hombres.xhtml">Telefonia</h:link>
+                    </li>
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="/landpage/ninos.xhtml">Computacion</h:link>
+                    </li>
+                </ul>
+                <li class="nav-item mt-3 mr-2" >
+                    <h:form>
+                        <b:commandButton value="Iniciar sesión" class="btn btn-outline-warning " action="Usuario"/>
+                    </h:form>
+                </li>
+
+                <b:dropMenu value=" "  icon="user" rendered="#{facesContext.getCurrentInstance().getExternalContext().getSessionMap()!=null}" styleClass="btnVerOPCUser" style="background-color: black; color: orange">
+                    <b:container fluid="true" style="align-content: center;text-align: center; background-color: black">
+                        <h:form style="background-color: black">
+                            <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" style="width: 100%"/>
+                            <p:separator/>
+                            <b:commandButton value="Editar perfil"  action="#{validarSesionController.redireccion()}" style="width: 100%; background-color: orange; border-color: black"/><br/><br/>
+                            <b:commandButton value="Cerrar sesión"  actionListener="#{validarSesionController.salir()}" style="width: 100%;  background-color: orange; border-color: black"/>
+                        </h:form>
+                    </b:container>
+                </b:dropMenu>
+
+
+                <p:growl id="carro" life="2000"/>
+                <b:dropMenu value=" " icon="shopping-cart" id="carritos" style="background-color: black; color: orange"/>
+                <p:overlayPanel  hideEffect="fade" for=":carritos" style="width:800px;  " dynamic="false">
+                    <h:form id="mi">
+                        <p:dataTable var="d" style="width: 120%;" value="#{detalleVentaController.list}" scrollable="true" scrollWidth="95%" scrollHeight="150" rows="5" paginator="true">
+                            <p:column>
+                                <h:graphicImage value="#{d.url}" width="50px;"/>
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{d.nombreProducto}" />
+                            </p:column>
+                            <p:column headerText="Marca">
+                                <h:outputText value="#{d.marca.nombreMarca}"/>
+                            </p:column>
+                            <p:column headerText="Precio Venta">
+                                <h:outputText value="#{d.precioVenta}" />
+                            </p:column>
+                            <p:column headerText="Talla">
+                                <h:outputText value="#{d.talla.talla}" />
+                            </p:column>
+
+                            <p:column headerText="Tipo de Ropa">
+                                <h:outputText value="#{d.tipoRopa.nombreTipoRopa}" />
+                            </p:column>
+
+                            <p:column headerText="Categoria">
+                                <h:outputText value="#{d.categoria.nombreCategoria}"/>
+                            </p:column>
+                            <p:column>
+                                <h:form>
+                                    <b:commandButton value="Borrar" update="mi"  icon="times" action="#{detalleVentaController.delete(d)}"/>
+                                </h:form>
+                            </p:column>
+                        </p:dataTable>
+
+                        <h:outputLabel for="total" value="Total:" />
+                        <h:outputText id="total" value="$#{detalleVentaController.total}" />
+                        <br>
+                            <h:outputLabel for="contador" value="Prendas:"/>
+                            <h:outputText id="contador" value="#{detalleVentaController.contador}"/>
+                        </br>
+                    </h:form>
+                    <h:form>
+                        <p:commandButton value="Compra Realizada" action="#{validarSesionController.redireccionCompra()}">
+                        </p:commandButton>
+                        <p:commandButton value="Vaciar carrito" update=":mi" action="#{detalleVentaController.deleteAll(d)}" style="margin-left: 50px;"/>
+                    </h:form>
+                </p:overlayPanel>
+            </div>
+        </nav>
+
+       <!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script> -->
+
+
+    </h:body>
+</html>
+

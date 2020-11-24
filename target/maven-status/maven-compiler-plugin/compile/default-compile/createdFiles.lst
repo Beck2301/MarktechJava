@@ -1,0 +1,15 @@
+Entity\Descuento_.class
+Entity\DetalleTarjeta_.class
+Entity\Marca_.class
+Entity\TipoRopa_.class
+Entity\Venta_.class
+Entity\Producto_.class
+Entity\Pais_.class
+Entity\Rol_.class
+Entity\FormaPago_.class
+Entity\DetalleVenta_.class
+Entity\Talla_.class
+Entity\Categoria_.class
+Entity\Factura_.class
+Entity\Cliente_.class
+Entity\User_.class

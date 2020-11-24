@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Administracion - Categoria</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+    </h:head>
+    <h:body>
+        <f:event type="preRenderView" listener="#{validarSesionController.validarSesion()}"/>
+        <p:growl id="msj"/>
+        <center>
+            <p:outputLabel value="Categoria" style="font-size: 500%;"/>
+        </center>
+        <ui:include src="navbar.xhtml"/>
+        <br/>
+             <h:form id="cat">
+            <p:outputLabel value="Ingrese categoría " />
+            <p:inputText value="#{categoriaController.categoria.nombreCategoria}"/>
+            <p:commandButton value="Enviar" actionListener="#{categoriaController.insertar()}" update=":msj :tabla cat"/>
+        </h:form>
+        <br />
+        <p:dataTable id="tabla" value="#{categoriaController.listaCategoria}" var="c" >
+            <p:column headerText="Código">
+                <p:outputLabel value="#{c.idCategoria}"/>
+            </p:column>
+            <p:column headerText="Categoría">
+                <p:outputLabel value="#{c.nombreCategoria}"/>
+            </p:column>
+            <p:column headerText="Modificar">
+                <h:form>
+                <p:commandLink value="Modificar" actionListener="#{categoriaController.leerid(c)}" update=":nuevo"
+                               oncomplete="PF('w').show()"/>
+                </h:form>
+            </p:column>
+            <p:column headerText="Eliminar" >
+                <h:form>
+                <p:commandLink value="Eliminar" actionListener="#{categoriaController.eliminar(c)}"
+                               update=":tabla :msj" />
+                </h:form>
+            </p:column>
+        </p:dataTable>
+        <p:dialog id="nuevo" widgetVar="w" header="Datos">
+            <h:form>                
+                <p:inputText type="hidden" value="#{categoriaController.categoria.idCategoria}"/>
+                <p:outputLabel value="Nombre: "/>
+                <p:inputText value="#{categoriaController.categoria.nombreCategoria}"/>
+                <p:commandButton value="Modificar" actionListener="#{categoriaController.modificar()}" update=":tabla :msj" oncomplete="PF('w').hide()"/>
+                <p:commandButton value="Cancelar" oncomplete="PF('w').hide()"/>
+            </h:form>
+        </p:dialog>
+        <p:separator/>
+    </h:body>
+</html>

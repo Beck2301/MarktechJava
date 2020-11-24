@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <title>Marktech</title>
+
+        <link  rel="icon"   href="https://pruebaeg180196.000webhostapp.com/logo_size_invert.jpg" type="image/png" />
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/util.css"/>
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/main.css"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/tienda.css"/>
+    </h:head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark menu" style="
+             margin-bottom: 0px;
+             ">
+            <h:link class="navbar-brand" outcome="/PaginaPrincipal/PaginaPrincipal.xhtml"> <img src="https://pruebaeg180196.000webhostapp.com/3880313004_f05a519d-0079-43fc-b0fb-70e719404e68.png" alt="" height="40px"/> </h:link>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="categoria.xhtml">Categoria</h:link>
+                    </li>
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="cliente.xhtml">Clientes</h:link>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="detalletarjetafiltro.xhtml">Tarjetas</h:link>
+                    </li>
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="factura.xhtml">Facturas</h:link>
+                    </li>
+                    <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="formapago.xhtml">Formas de pago</h:link>
+                    </li>
+                     <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="marca.xhtml">Marcas</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="pais.xhtml">Pais</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="producto.xhtml">Productos</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="rol.xhtml">Roles</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="talla.xhtml">Detalles tamanos</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="tipoRopa.xhtml">Tipo de producto</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="venta.xhtml">Ventas</h:link>
+                    </li>
+                      <li class="nav-item  ">
+                        <h:link class="nav-link" outcome="user.xhtml">Usuarios</h:link>
+                    </li>
+
+
+
+                </ul>
+
+                <li class="nav-item mt-3 mr-2" >
+                    <h:link  class="nav-link" outcome="perfilAdmin.xhtml">Ver perfil</h:link>
+                </li>
+                <h:form >  
+                    <p:menubar class="nav-item mt-3 mr-2">
+                        <p:menuitem value="Cerrar sesión" class="" actionListener="#{validarSesionController.salir()}"/>
+                    </p:menubar>
+                </h:form>
+            </div>
+        </nav>
+
+    </body>
+</html>

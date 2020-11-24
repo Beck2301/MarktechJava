@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro</title>
+        <link href="../resources/css/Registro.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="bodyRe">
+        <p:growl id="msj"/>
+        <b:navBar brand-img="../resources/Imagenes/a1 - copia (2).jpg" brandHref="../PaginaPrincipal/PaginaPrincipal.xhtml" inverse="false">
+           
+
+            <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+                <b:navLink value="Favorito" icon="heart" href="#"></b:navLink>
+                <b:navLink value="Bolsa" icon="shopping-cart" href="#"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+
+        <div class="registro">
+            <h:form>
+                <br></br>
+                <b:container fluid="true">
+                    <b:panel title="Regístrate" look="info">
+                        <b:row>
+                            <img src="../resources/Imagenes/a1 - copia.jpg" alt=""/>
+                            <h:form>
+                                <b:column class="caracteres">
+                                    <br></br>
+                                    <p class="text-center">"Crea tu cuenta y serás de los primeros en</p>
+                                    <p class="text-center">enterarte de nuestras promociones y nuevas</p>
+                                    <p class="text-center">colecciones"</p>
+                                </b:column>
+                            </h:form>
+                        </b:row>
+                        <b:row>
+                            <br></br>
+                            <b:column>
+                                <h:outputText value="¿Cómo quieres que nos dirijamos a ti?" />
+                                <b:inputText placeholder="Nombre*" value="#{clienteController.cliente.nombreCliente}" required="true" autocomplete="false"/>
+                                <b:inputText placeholder="Apellido*" value="#{clienteController.cliente.apellidoCliente}" required="true" ajax="true" autocomplete="false"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <br></br>
+                            <b:column>
+                                <h:outputText value="Introduce un e-mail " />
+                                <b:inputText placeholder="E-mail*" autocomplete="false" id="email" value="#{clienteController.cliente.correo}" required="true" requiredMessage="Ingrese su Email correctamente"
+                                             validatorMessage="Formato Incorrecto de Correo ">
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </b:inputText>
+                                <p:watermark for="email" value="carlos@gmail.com"/>
+                                <p:message for="email"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <br></br>
+                            <b:column>
+                                <h:outputText value="Introduce tu dirección correcta para que tus entregas sean mucho mas rápidas" />
+                                <b:inputText placeholder="Direccion*" autocomplete="false" id="txtDireccion" value="#{clienteController.cliente.direccion}" required="true" >
+                                    <f:validateLength minimum="10"/>
+                                </b:inputText>
+                                <h:outputLabel for="cmbPais" value="Pais cliente"/><br/>
+                                <p:selectOneMenu style="width: 100%" id="cmbPais" value="#{clienteController.pais.idPais}">     
+                                    <f:selectItems value="#{paisController.listaPais}" var="pa" itemLabel="#{pa.nombrePais}" itemValue="#{pa.idPais}"/>
+                                </p:selectOneMenu>
+                            </b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column>
+                                <b:commandButton value="Siguiente Paso" look="info" style="width: 100%" actionListener="#{clienteController.insertarCliente()}"/>
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </b:container>
+            </h:form>
+        </div>
+
+    </h:body>
+</html>
+

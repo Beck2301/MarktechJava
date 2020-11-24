@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Marktech</title>
+                <link  rel="icon"   href="https://pruebaeg180196.000webhostapp.com/logo_size_invert.jpg" type="image/png" />
+        <f:event type="preRenderView" listener="#{validarSesionController.index()}"/>
+    </h:head>
+    
+    <h:body class="body">
+        
+        <h:outputScript library="js" name="userActivo.js" />
+        <div id="usuarioLogeadoDIV" style="display: none" >#{userController.kevin}</div>
+        <ui:include src="/PaginaPrincipal/navbarPrincipal.xhtml"/>
+        
+               <div class="contenedor">
+                <img src="https://eloutput.com/app/uploads-eloutput.com/2019/04/razer-ripsaw-hd-4k.jpg" alt=""
+                     class="img-fluid d-block mx-auto dimension_img_index"/>
+
+                <div class="centrado text-white">
+                    <h1 class="" style="font-family: 'Fredoka One', cursive;">LO MEJOR EN TECNOLOGIA <h3
+                            style="font-family: 'Rajdhani', sans-serif;">En una sola pagina </h3>
+                    </h1>
+
+                    <a href="../landpage/catalogo.xhtml" class="btn btn-warning "> Ver categorias</a>
+                </div>
+
+
+
+            </div>
+        
+ 
+        
+             <div class="row pb-5 mb-4 ">
+
+        
+                    <!-- Card--> 
+                    <div class="col-lg-3 col-md-5 mb-4 mb-lg-0 div-img  ">
+                        <a href="../landpage/ninos.xhtml">
+                            <div class="card rounded shadow-sm border-1 img ">
+                                <div class="card-body p-4">
+                                    <img src="https://hardzone.es/app/uploads-hardzone.es/2020/01/Gaming-PC-01.jpg"
+                                         alt="" class="img-fluid d-block mx-auto mb-5 dimension_img "/>
+
+                                    <h5><a href="#" class="text-dark ">Computacion</a></h5>
+                                    <ul class="list-inline small">
+                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success">#{item.precio}</i></li>
+                                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                
+                        <div class="btn btn-warning text "> <a href="" class="text-dark"> Agregar al carrito </a></div>
+                        </a>
+                    </div>
+                    <!--Final Card -->
+                    
+                    <!-- Card--> 
+                    <div class="col-lg-3 col-md-5 mb-4 mb-lg-0 div-img  ">
+                        <a href="../landpage/hombres.xhtml">
+                            <div class="card rounded shadow-sm border-1 img ">
+                                <div class="card-body p-4">
+                                    <img src="https://www.65ymas.com/uploads/s1/31/00/99/los-tele-fonos-mo-viles-ma-s-innovadores-de-este-2020-samsung-galaxy-s20-y-s20.jpeg"
+                                         alt="" class="img-fluid d-block mx-auto mb-5 dimension_img "/>
+
+                                    <h5><a href="#" class="text-dark ">Telefonia</a></h5>
+                                    <ul class="list-inline small">
+                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success">#{item.precio}</i></li>
+                                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                
+                        <div class="btn btn-warning text "> <a href="" class="text-dark"> Agregar al carrito </a></div>
+                        </a>
+                    </div>
+                    <!--Final Card -->
+                    
+                    <!-- Card--> 
+                    <div class="col-lg-3 col-md-5 mb-4 mb-lg-0 div-img  ">
+                        <a href="../landpage/mujeres.xhtml" >
+                            <div class="card rounded shadow-sm border-1 img ">
+                                <div class="card-body p-4">
+                                    <img src="https://i.ytimg.com/vi/VBUe_nz0OMg/maxresdefault.jpg"
+                                         alt="" class="img-fluid d-block mx-auto mb-5 dimension_img "/>
+
+                                    <h5><a href="#" class="text-dark ">Tecnologia</a></h5>
+                                    <ul class="list-inline small">
+                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success">#{item.precio}</i></li>
+                                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                
+                        <div class="btn btn-warning text "> <a href="" class="text-dark"> Agregar al carrito </a></div>
+                        </a>
+                    </div>
+                    <!--Final Card -->
+         
+                
+                
+                
+            </div>
+        
+        
+        
+        
+        
+        
+    </h:body>
+</html>
+
