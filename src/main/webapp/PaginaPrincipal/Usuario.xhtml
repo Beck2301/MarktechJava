@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui" style="font-size: 25px">
+
+    <h:head>
+        <title>Login</title>
+        <link rel="icon" href="https://pruebaeg180196.000webhostapp.com/logo_size_invert.jpg" type="image/png" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://pruebaeg180196.000webhostapp.com/css/tienda.css"/>
+
+
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/util.css"/>
+        <link rel="stylesheet" type="text/css" href="https://pruebaeg180196.000webhostapp.com/login/main.css"/>
+        <!--===============================================================================================-->
+    </h:head>
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="body">
+            <div class=" text-white">
+                <!--Barra navegación-->
+
+
+                <div class="container py-5 text-dark">
+                    <div class="limiter rounded  ">
+                        <div class="container-login100 rounded p-4  ">
+
+
+                            <div class="wrap-login100 rounded">
+
+
+
+
+
+
+
+                                <h:form class="login100-form validate-form border border-warning" style="  padding-top: 95px;   ">
+
+                                    <span class="login100-form-title p-b-35 border-warning">
+                                        <img src="https://pruebaeg180196.000webhostapp.com/logo_size.jpg" alt=""
+                                             class="img-fluid  " height="150px" width="150px"/>
+                                    </span>
+                                    <span class="login100-form-title p-b-35">
+                                        Iniciar sesion
+                                    </span>
+
+
+
+                                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+
+
+                                        <b:inputText id="usuario" value="#{userController.user.nombreUsuario}" placeholder="Usuario" required="true" requiredMessage="Escriba el usuario por favor">
+                                            <f:facet name="prepend">
+                                                <b:icon name="user" />
+                                            </f:facet>
+                                        </b:inputText>
+                                        <span class="focus-input100"></span>
+
+                                    </div>
+
+                                    <div class="wrap-input100  validate-input m-b-20" data-validate="Type password" >
+                                        <b:inputSecret id="password" value="#{userController.user.clave}" placeholder="Contraseña" required="true" requiredMessage="Escriba el password por favor">
+                                            <f:facet name="prepend">
+                                                <b:iconAwesome name="key" /> 
+                                            </f:facet>
+                                        </b:inputSecret>
+
+                                    </div>
+
+                                    <div class="container-login100-form-btn">
+                                        <b:commandButton value="Ingresar" action="#{userController.login()}" update="@form" look="info"
+                                                         style="width:100%" />
+                                    </div>
+
+
+
+                                    <div class="w-full text-center p-t-27 p-b-239" style="
+                                         padding-bottom: 150PX;
+                                         ">
+                                        <span class="txt1">
+                                            Olvidé mi
+                                        </span>
+
+                                        <a href="#" class="txt2">
+                                            contraseña
+                                        </a>
+
+                                        <div class="text-center mt-5 ">
+                                            <a href="RegistroUsuario.xhtml" class="text-warning">
+                                                Crear cuenta
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </h:form>
+
+                                <div class="login100-more "
+                                     style="background-image: url(' https://i.pinimg.com/564x/21/dc/92/21dc92f3a93ec26522485d4ee305175a.jpg');">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            
+
+
+        </ui:define>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+                integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    </ui:composition>
+</html>
+
